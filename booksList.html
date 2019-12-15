@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> eLibary </title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT" crossorigin="anonymous">
+    <link href="css/styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+</head>
+<di>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="aboutUs.html">About Us<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="virtual_Tour_project.html">Virtual Toure</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booksList.html">Books</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input id = "searchTerm" class="form-control mr-sm-2" type="text" placeholder="Search by book title only">
+                <button id = "searchButton" class="btn btn-secondary my-2 my-sm-0" type="button">Search</button>
+            </form>
+            <form class="nav-link">
+                <span class="navbar-brand" type="text">Wellcome , Guest </span>
+            </form>
+        </div>
+    </nav>
+</di>
+
+<div class="container">
+    <h3>Books in our Collection</h3>
+    <button id = "searchButton" class="btn btn-secondary my-2 my-sm-0" type="button"><a href="advancedSearch.html">Click for Advanced Book Search</a></button>
+    <span class="navbar navbar-expand -g navbar-light bg-dark" style="float:right;"><a href="addnewbook.html">Add a New
+            Book</a></span>
+</div>
+
+<!-- The starting of modal  -->
+<div class="modal fade" id="confirmDeleteBookModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <p><b>Are you sure you wish to delete this book?</b></p>
+                <br />
+                <p id="deleteModalBookISBN"></p>
+                <p id="deleteModalBookTitle"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
+                <button id="deleteModalBtnYes" type="button" class="btn btn-danger">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+              //let jQuery to from the modal part 
+    $(document).ready(function () {
+        $("#confirmDeleteBookModal").on("show.bs.modal", function (event) {
+            const deletelink = $(event.relatedTarget);
+            const bookId = deletelink.data("bookid");
+            const bookISBN = deletelink.data("bookisbn");
+            const bookTitle = deletelink.data("booktitle");
+            const theModalDialog = $(this);
+            theModalDialog.find("#deleteModalBookISBN").text("ISBN:" + bookISBN);
+            theModalDialog.find("#deleteModalBookTitle").text("Book Title: " + bookTitle);
+
+            $("#deleteModalBtnYes").on("click", function (event) {
+                fetch(`https://elibraryrestapi.herokuapp.com/elibrary/api/book/delete/${bookId}`, {
+                    method: "DELETE"
+
+                }).then(function(){
+                    $("#confirmDeleteBookModal").modal("hide");
+                    location.reload()
+                })
+                  
+            })
+        })
+    })
+</script>
+
+</header>
+
+<div class="table-active" id="outPut" ></div>
+<script src="jS/script.js"></script>
+
+<footer class="footer">
+    <div class="container">
+        <span>Fitsum CS318</span>
+        <span style="float:right">@December 2019</span>
+    </div>
+</footer>
+
+</body>
+
+</html>

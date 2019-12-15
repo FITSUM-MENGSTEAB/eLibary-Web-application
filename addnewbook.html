@@ -1,0 +1,125 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> eLibary </title>
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/cerulean/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LV/SIoc08vbV9CCeAwiz7RJZMI5YntsH8rGov0Y2nysmepqMWVvJqds6y0RaxIXT" crossorigin="anonymous">
+    <link href="">
+</head>
+<!--- This the navigation bar start -->
+<di>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="index.html">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+            aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor02">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="aboutUs.html">About Us<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="virtual_Tour_project.html">Virtual Toure</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="booksList.html">Books</a>
+                </li>
+
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <form class="nav-link">
+                <span class="navbar-brand" type="text">Welcome , Guest </span>
+            </form>
+        </div>
+    </nav>
+</di>
+<!--- This the navigation bar end -->
+
+<!--- Message Display div after we add new book  -->
+<div  id="display_Message"  style="margin: 55px;">  </div>
+
+          <h3>Add New Book Form</h3>
+
+<div class="container"> 
+    <form id="formReset">
+        <fieldset>
+            <span>* required form fields</span>
+            <input type="hidden" name="bookId" value="" />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="container">
+                        <label for="title">*Book Title</label>
+                        <input type="text" name="" id="title" class="form-control" value="" 
+                            placeholder="Enter Book title" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+           
+                <div class="col-md-6">
+                    <div class="container">
+                        <label for="title">*ISBN</label>
+                        <input type="text" name="" id="isbn" class="form-control" value="" required>
+                    </div>
+                </div>
+            
+                <div class="col-md-6">
+                    <div class="container">
+                        <label for="title">*Overdue Fee per day</label>
+                        <input type="text" name="" id="overdue" class="form-control" value="" 
+                            placeholder="0.00" required>
+                    </div>
+                </div>
+         
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="container">
+                        <label for="title">*Publisher</label>
+                        <input type="text" name="" id="publisher" class="form-control" value="" required>
+                    </div>
+                </div>
+          
+                <div class="col-md-6">
+                    <div class="container">
+                        <label for="title">*Date Published</label>
+                        <input type="text" name="" id="published_date" class="form-control" value="" 
+                            placeholder="yyyy-mm-dd" required>
+                    </div>
+                </div>
+                
+            </div>
+
+        </fieldset>
+</div>
+<div class="row">
+    <div class="container" style="padding: 10px ">
+        <div class="container" style="padding-block: 10px">
+            <button style="float:right" type="reset" class="btn btn-danger">Reset</button>
+        </div>
+        <div>
+            <button id="bookSave" style="float:right" type="button" class="btn btn-success"> Click to Add Book</button>
+        </div>
+    </div>
+</div>
+</form>
+
+</div>
+</body>
+<script src="jS/addBook.js"></script>
+
+  
+      <div class="container">
+        <footer class="footer">
+                <span>Fitsum CS318</span>
+                <span style="float:right">December 2019</span>
+        </footer>
+      </div>
+</html>
