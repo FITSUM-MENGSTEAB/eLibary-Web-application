@@ -1,6 +1,6 @@
 ## HTML5 , CSS ,  Bootstrap
 ## eLibary App  - project 
-  <img src= './e-libary.PNG'/>
+  <img src= './e-libary.png.png'/>
  eLibary App Stracture 
  
 * Developing the eLibrary web application using CSS framework (such as Bootstrap) to apply necessary styling, to achieve this sample look and page layou.
